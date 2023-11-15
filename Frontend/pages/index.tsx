@@ -1,131 +1,58 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+import React from 'react';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Home | auctionweb.site</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <section className="xl:bg-contain bg-top bg-no-repeat">
+        <div className="flex flex-wrap items-center -mx-3">
+          <div className="w-full lg:w-1/2 px-3">
+            <div className="py-12">
+              <div className="max-w-lg lg:max-w-md mx-auto lg:mx-0 mb-8 text-center lg:text-left">
+                <h2 className="text-3xl md:text-4xl mb-4 font-bold font-heading">
+                  <span>A </span>
+                  <span className="text-indigo-600">full stack</span>
+                  <span> Auction Website</span>
+                </h2>
+                <p className="mb-8 text-gray-700 leading-relaxed">
+                  This is not a real store and is hosted for demo purposes only.
+                  This site utilizes a microservices architecutre and is written
+                  using TypeScript, Node.js, MySQL, Docker and Kubernetes for
+                  the backend, with React, Next.js, TailwindCSS and Emotion.js
+                  for the frontend.
+                </p>
+              </div>
+              <div className="text-center lg:text-left">
+                <Link href="/listings">
+                  <h2>Brouse listings</h2>
+                </Link>
+                <a
+                  className="ml-3 text-indigo-600 hover:underline"
+                  href="https://github.com/jarrodjm/auction-website"
+                >
+                  View the Code
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2 px-3 lg:bg-blueGray-50 mb-12 lg:mb-0">
+            <div className="flex items-center justify-center">
+              <img
+                className="lg:max-w-lg"
+                src="https://shuffle.dev/metis-assets/illustrations/working-from-airport.png"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            Segoe UI,
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            Fira Sans,
-            Droid Sans,
-            Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+      </section>
+    </>
   );
-}
+};
+
+export default Home;
