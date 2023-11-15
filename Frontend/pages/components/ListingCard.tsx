@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-import Countdown from './Countdown';
+import Countdown from '.\Countdouwn';
 
 interface IProps {
   name: string;
