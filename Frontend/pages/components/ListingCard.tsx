@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-import Countdown from '.\Countdouwn';
+//import Countdown from '.\Countdown';
 
 interface IProps {
   name: string;
@@ -19,7 +19,7 @@ const ListingCard = ({ name, price, slug, smallImage, expiresAt }: IProps) => {
           <img className='w-full'src={smallImage} alt={name} />
           <div className='p-3'>
             <a className='text-indigo-600 hover:underline'>
-              <Countdown expiresAt={expiresAt} />
+              {expiresAt}
             </a>
             <p className='text-xl'>{price}</p>
           </div>

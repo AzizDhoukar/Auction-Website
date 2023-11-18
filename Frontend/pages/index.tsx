@@ -31,12 +31,12 @@ const Home = () => {
                 <Link href="/listings">
                   <h2>Brouse listings</h2>
                 </Link>
-                <a
-                  className="ml-3 text-indigo-600 hover:underline"
-                  href="https://github.com/jarrodjm/auction-website"
-                >
-                  View the Code
-                </a>
+                <Link href="/auth/signin">
+                  <h2>Signin</h2>
+                </Link>
+                <Link href="/auth/signup">
+                  <h2>Signup</h2>
+                </Link>
               </div>
             </div>
           </div>
