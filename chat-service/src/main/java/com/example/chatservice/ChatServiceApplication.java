@@ -8,6 +8,7 @@ public class ChatServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ChatServiceApplication.class, args);
+        System.out.println("the websocket on port8081 is working properly");
     }
 
 }
