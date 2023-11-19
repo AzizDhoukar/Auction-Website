@@ -31,11 +31,8 @@ const Home = () => {
                 <Link href="/listings">
                   <h2>Brouse listings</h2>
                 </Link>
-                <Link href="/auth/signin">
-                  <h2>Signin</h2>
-                </Link>
-                <Link href="/auth/signup">
-                  <h2>Signup</h2>
+                <Link href="/auth/">
+                  <h2>Auth</h2>
                 </Link>
               </div>
             </div>
