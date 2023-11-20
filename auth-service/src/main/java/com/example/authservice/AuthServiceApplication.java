@@ -8,7 +8,7 @@ public class AuthServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AuthServiceApplication.class, args);
-        System.out.print("the server on port 8070 is working properly");
+        System.out.print("the server on port 8082 is working properly");
     }
 
 }

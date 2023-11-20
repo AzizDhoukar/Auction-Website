@@ -9,7 +9,7 @@ public class GatewayapiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayapiApplication.class, args);
-        System.out.println("gateway_api is working properly");
+        System.out.println("gateway_api is working properly on port 8080");
     }
 
 
