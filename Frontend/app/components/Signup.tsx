@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
@@ -25,7 +24,7 @@ const validationSchema = Yup.object({
   passwordConfirm: Yup.string()
     .min(4, 'Passwords must be more than 4 characters')
     .max(32, 'Passwords must be less than 32 characters')
-    .oneOf([Yup.ref('password'), null], 'Passwords do not match')
+    .oneOf([Yup.ref('password')], 'Passwords do not match')
     .required('Required'),
 });
 
@@ -35,7 +34,7 @@ const SignUp = () => {
   const { setAuth } = useContext(AppContext);
   const router = useRouter();
 
-  const onSubmit = async (body) => {
+  const onSubmit = async (body : any) => {
     setIsSigningUp(true);
 
     try {
@@ -43,8 +42,8 @@ const SignUp = () => {
       setAuth({ isAuthenticated: true, currentUser: data });
       toast.success('Sucessfully signed up!');
       router.push('/');
-    } catch (err) {
-      err.response.data.errors.forEach((err) => toast.error(err.message));
+    } catch (err : any) {
+      err.response.data.errors.forEach((err : any) => toast.error(err.message));
     }
 
     setIsSigningUp(false);

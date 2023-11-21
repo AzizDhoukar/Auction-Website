@@ -1,7 +1,7 @@
-import Image from "next/image";
+'use client'
 import { useCallback, useState } from "react";
-import SignUp from "../components/SignUp";
-import SignIn from "../components/SignIn";
+import SignUp from "../components/Signup";
+import SignIn from "../components/Signin";
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -21,23 +21,13 @@ const Auth = () => {
     <div 
       className='flex  min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100'
     >
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Image
-          height="48"
-          width="48"
-          className="mx-auto w-auto"
-          src="/images/logo.png"
-          alt="Logo"
-        />
-      </div>
       {variant === 'REGISTER' && (<SignUp></SignUp>)} 
-      {variant === 'LOGIN' && (<SignIn></SignIn>)}       
-      
+      {variant === 'LOGIN' && (<SignIn></SignIn>)}      
       <div 
             onClick={toggleVariant} 
-            className="underline cursor-pointer"
+            className="underline cursor-pointer "
           >
-            {variant === 'LOGIN' ? 'Create an account' : 'Login'}
+            <span className="flex items-center">{variant === 'LOGIN' ? 'Create an account' : 'Login'}</span>
           </div>
   </div>
   )

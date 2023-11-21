@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
@@ -25,7 +24,7 @@ const SignIn = () => {
   const [isSigningIn, setIsSigningIn] = useState(false);
   const router = useRouter();
 
-  const onSubmit = async (body) => {
+  const onSubmit = async (body : any) => {
     setIsSigningIn(true);
 
     try {
@@ -33,8 +32,8 @@ const SignIn = () => {
       setAuth({ isAuthenticated: true, currentUser: data });
       toast.success('Sucessfully signed in!');
       router.push('/');
-    } catch (err) {
-      err.response.data.errors.forEach((err) => toast.error(err.message));
+    } catch (err : any) {
+      err.response.data.errors.forEach((err : any) => toast.error(err.message));
     }
 
     setIsSigningIn(false);
