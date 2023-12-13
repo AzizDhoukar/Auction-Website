@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
 
-import Countdown from './Countdown';
+//import Countdown from '.\Countdown';
 
 interface IProps {
   name: string;
   expiresAt: string;
-  price: number;
+  price: string;
   slug: string;
   smallImage: string;
 }
@@ -14,12 +14,12 @@ interface IProps {
 const ListingCard = ({ name, price, slug, smallImage, expiresAt }: IProps) => {
   return (
     <div className='w-full lg:w-1/5 sm:w-1/3 px-2	mb-4'>
-      <Link href={slug}>
+      <Link href={slug} legacyBehavior>
         <div className='rounded shadow cursor-pointer'>
           <img className='w-full'src={smallImage} alt={name} />
           <div className='p-3'>
             <a className='text-indigo-600 hover:underline'>
-              <Countdown expiresAt={expiresAt} />
+              {expiresAt}
             </a>
             <p className='text-xl'>{price}</p>
           </div>
