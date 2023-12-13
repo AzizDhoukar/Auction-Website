@@ -23,7 +23,7 @@ const ActiveLink = ({ children, activeClassName, href }: IProps) => {
       : childClassName;
 
   return (
-    <Link href={href}>
+    <Link href={href} legacyBehavior>
       {React.cloneElement(children, {
         className: className ?? null,
       })}

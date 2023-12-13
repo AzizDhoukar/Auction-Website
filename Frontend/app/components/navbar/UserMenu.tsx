@@ -57,14 +57,23 @@ const UserMenu = () => {
             aria-orientation="vertical"
             aria-labelledby="user-menu"
           >
-            <Link href={"/profile"}>
-              <a className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' role="menuitem">Your Profile</a>
+            <Link
+              href={"/profile"}
+              className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+              role="menuitem">
+              Your Profile
             </Link>
-            <Link href="/dashboard/listings">
-              <a className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' role="menuitem">Dashboard</a>
+            <Link
+              href="/dashboard/listings"
+              className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+              role="menuitem">
+              Dashboard
             </Link>
-            <Link href="/settings/profile">
-              <a className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' role="menuitem">Settings</a>
+            <Link
+              href="/settings/profile"
+              className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+              role="menuitem">
+              Settings
             </Link>
             <a className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' onClick={onClick} role="menuitem">
               Sign out

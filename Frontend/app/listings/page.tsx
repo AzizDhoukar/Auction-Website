@@ -24,21 +24,36 @@ const Listings = ({ listings, search } : any) => {
         </h3>
       </section>
       <div className='py-3 flex flex-wrap -mx-2 -mb-4'>
-        {listings?.map((listing : any, idx : any) => (
-          <ListingCard
-            key={idx}
-            name={listing.title}
-            expiresAt={listing.expiresAt}
-            price={listing.currentPrice}
-            smallImage={listing.smallImage}
-            slug={`/listings/${listing.slug}`}
+        <ListingCard
+            key="0"
+            name="first item"
+            expiresAt="1 day"
+            price = "1000"
+            smallImage="img0"
+            slug="/listings/0"
           />
-        ))}
+          <ListingCard
+            key="1"
+            name="second item"
+            expiresAt="3 day"
+            price = "1200"
+            smallImage="img1"
+            slug="/listings/1"
+          />
+          <ListingCard
+            key="2"
+            name="third item"
+            expiresAt="4 day"
+            price = "1220"
+            smallImage="img2"
+            slug="/listings/2"
+          />
       </div>
     </>
   );
 };
 
+/*
 Listings.getInitialProps = async ({ query }: any, client : any) => {
   const { data } = await client.get(
     `/api/listings?search=${query.search || ''}`
@@ -46,5 +61,6 @@ Listings.getInitialProps = async ({ query }: any, client : any) => {
 
   return { listings: data || [], search: query.search };
 };
+*/
 
 export default Listings;

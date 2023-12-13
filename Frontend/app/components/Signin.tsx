@@ -31,7 +31,7 @@ const SignIn = () => {
       const { data } = await axios.post('/api/auth/signin', body);
       setAuth({ isAuthenticated: true, currentUser: data });
       toast.success('Sucessfully signed in!');
-      router.push('/');
+      router.push('/listings');
     } catch (err : any) {
       err.response.data.errors.forEach((err : any) => toast.error(err.message));
     }

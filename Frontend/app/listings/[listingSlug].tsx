@@ -10,7 +10,6 @@ import * as Yup from 'yup';
 
 import Breadcrumb from '../components/Breadcrumb';
 import Breadcrumbs from '../components/Breadcrumbs';
-import Countdown from '../components/Countdown';
 
 
 const Listing = ({ listingData } : any) => {

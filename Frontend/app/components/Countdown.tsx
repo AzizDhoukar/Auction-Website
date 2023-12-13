@@ -15,7 +15,7 @@ const Countdown = ({ expiresAt }: IProps) => {
   useEffect(() => {
     countdownTimer();
 
-    const interval = setInterval(() => {
+    const interval:any = setInterval(() => {
       if (timeleft === 'Times up!') return clearInterval(interval);
       countdownTimer();
     }, 1000);

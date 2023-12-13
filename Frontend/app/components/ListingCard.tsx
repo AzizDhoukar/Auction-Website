@@ -6,7 +6,7 @@ import React from 'react';
 interface IProps {
   name: string;
   expiresAt: string;
-  price: number;
+  price: string;
   slug: string;
   smallImage: string;
 }
@@ -14,7 +14,7 @@ interface IProps {
 const ListingCard = ({ name, price, slug, smallImage, expiresAt }: IProps) => {
   return (
     <div className='w-full lg:w-1/5 sm:w-1/3 px-2	mb-4'>
-      <Link href={slug}>
+      <Link href={slug} legacyBehavior>
         <div className='rounded shadow cursor-pointer'>
           <img className='w-full'src={smallImage} alt={name} />
           <div className='p-3'>
