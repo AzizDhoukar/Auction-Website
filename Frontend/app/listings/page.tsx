@@ -22,31 +22,33 @@ const Listings = ({ listings, search } : any) => {
         <title> Browsing Listings | auctionweb.site</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Navbar/>
-      <div className="container mb-auto mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-        <Breadcrumbs>
-          <Breadcrumb link="/" name="Home" />
-          <Breadcrumb link="/listings" name="Browse Listings" />
-        </Breadcrumbs>
-        <section className="pt-3 mb-3">
-          <h3 className="text-3xl leading-tight font-semibold font-heading">
-            Showing {!search ? 'all listings' : `results for "${search}"`}
-          </h3>
-        </section>
-        <div className='py-3 flex flex-wrap -mx-2 -mb-4 '>
-          {placeholderData.map(item => (
-            <ListingCard
-            key={item.key}
-            name={item.name}
-            expiresAt={item.expiresAt}
-            price={item.price}
-            smallImage={item.smallImage}
-            slug={item.slug}
-            />
-            ))}
-        </div>
+      <div className='flex flex-col h-screen justify-between'>
+        <Navbar/>
+          <div className="container mb-auto mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+            <Breadcrumbs>
+              <Breadcrumb link="/" name="Home" />
+              <Breadcrumb link="/listings" name="Browse Listings" />
+            </Breadcrumbs>
+            <section className="pt-3 mb-3">
+              <h3 className="text-3xl leading-tight font-semibold font-heading">
+                Showing {!search ? 'all listings' : `results for "${search}"`}
+              </h3>
+            </section>
+            <div className='py-3 flex flex-wrap -mx-2 -mb-4 '>
+              {placeholderData.map(item => (
+                <ListingCard
+                key={item.key}
+                name={item.name}
+                expiresAt={item.expiresAt}
+                price={item.price}
+                smallImage={item.smallImage}
+                slug={item.slug}
+                />
+                ))}
+            </div>
+          </div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </>
   );
 };
