@@ -28,8 +28,7 @@ const Home = () => {
                   This is not a real store and is hosted for demo purposes only.
                   This site utilizes a microservices architecutre and is written
                   using TypeScript, Node.js, MySQL, Docker and Kubernetes for
-                  the backend, with React, Next.js, TailwindCSS and Emotion.js
-                  for the frontend.
+                  the backend, with React, Next.js, TailwindCSS for the frontend.
                 </p>
               </div>
             </div>
