@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 
 import SearchIcon from './SearchIcon';
@@ -10,10 +10,7 @@ const SearchBar = () => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    router.push({
-      pathname: `/listings`,
-      query: { search },
-    });
+    router.push(`/listings`,);
 
     setSearch('');
   };

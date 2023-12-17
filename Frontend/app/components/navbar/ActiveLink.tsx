@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { ReactElement, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { ReactElement } from 'react';
 
 interface IProps {
   children: ReactElement;
@@ -9,16 +9,9 @@ interface IProps {
 }
 
 const ActiveLink = ({ children, activeClassName, href }: IProps) => {
-  const [asPath, setAsPath] = useState('');
-  useEffect(() => {
-    // We'll call useRouter inside useEffect which runs after the component mounts
-    const { asPath } = useRouter();
-    setAsPath(asPath);
-  }, []);
-  const childClassName = children.props.className ?? '';
 
-  const className =
-    asPath === href
+  const childClassName = children.props.className ?? '';
+  const className = href
       ? `${childClassName} ${activeClassName}`.trim()
       : childClassName;
 

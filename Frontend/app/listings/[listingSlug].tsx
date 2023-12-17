@@ -160,7 +160,7 @@ const Listing = ({ listingData } : any) => {
 Listing.getInitialProps = async (context: NextPageContext, client: any) => {
   try {
     const { listingSlug } = context.query;
-    const { data } = await client.get(`/api/listings/${listingSlug}`);
+    const { data } = await client.get(`/api/listings/${listingSlug}`); // change this to our api call
     return { listingData: data };
   } catch (err) {
     console.error(err);

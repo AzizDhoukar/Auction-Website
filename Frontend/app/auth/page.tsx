@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useState } from "react";
-import SignUp from "../components/Signup";
-import SignIn from "../components/Signin";
+import SignUp from "../components/auth/Signup";
+import SignIn from "../components/auth/Signin";
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -24,11 +24,11 @@ const Auth = () => {
       {variant === 'REGISTER' && (<SignUp></SignUp>)} 
       {variant === 'LOGIN' && (<SignIn></SignIn>)}      
       <div 
-            onClick={toggleVariant} 
-            className="underline cursor-pointer "
-          >
-            <span className="flex items-center">{variant === 'LOGIN' ? 'Create an account' : 'Login'}</span>
-          </div>
+        onClick={toggleVariant} 
+        className="underline cursor-pointer flex justify-center text-sm font-medium text-gray-600 hover:text-gray-500"
+      >
+        <span >{variant === 'LOGIN' ? 'Create an account' : 'Login'}</span>
+      </div>
   </div>
   )
 }

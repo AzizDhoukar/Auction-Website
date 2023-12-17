@@ -31,9 +31,7 @@ const Navbar = () => {
             <div className='hidden lg:ml-6 lg:flex lg:space-x-8'>
               <NavbarTab href="/" name="Home" />
               <NavbarTab href="/listings" name="Browse Listings" />
-              {isAuthenticated && (
-                <NavbarTab href="/sell" name="Sell an Item" />
-              )}
+              
             </div>
           </div>
           <SearchBar />
@@ -64,8 +62,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div className='hidden lg:ml-6 lg:flex lg:space-x-8'>
-              <NavbarTab href="/auth/signin" name="Sign in" />
-              <NavbarTab href="/auth/signup" name="Sign up" />
+              <NavbarTab href="/auth" name="Sign in" />
             </div>
           )}
         </div>

@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 
+import Navbar from './components/navbar/Navbar';
+
 
 const Home = () => {
   return <>
@@ -10,6 +12,7 @@ const Home = () => {
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <section className="xl:bg-contain bg-top bg-no-repeat">
+      <Navbar></Navbar>
       <div className="flex flex-wrap items-center -mx-3">
         <div className="w-full lg:w-1/2 px-3">
           <div className="py-12">

@@ -4,6 +4,7 @@ import React from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ListingCard from '../components/ListingCard';
+import Navbar from '../components/navbar/Navbar';
 
 
 
@@ -14,6 +15,7 @@ const Listings = ({ listings, search } : any) => {
         <title> Browsing Listings | auctionweb.site</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <Navbar/>
       <Breadcrumbs>
         <Breadcrumb link="/" name="Home" />
         <Breadcrumb link="/listings" name="Browse Listings" />
