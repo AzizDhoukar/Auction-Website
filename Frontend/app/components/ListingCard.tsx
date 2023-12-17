@@ -16,7 +16,7 @@ const ListingCard = ({ name, price, slug, smallImage, expiresAt }: IProps) => {
     <div className='w-full lg:w-1/5 sm:w-1/3 px-2	mb-4'>
       <Link href={slug} legacyBehavior>
         <div className='rounded shadow cursor-pointer'>
-          <img className='w-full'src={smallImage} alt={name} />
+          <img className='w-full' src={smallImage} alt={name} />
           <div className='p-3'>
             <a className='text-indigo-600 hover:underline'>
               {expiresAt}
