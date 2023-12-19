@@ -9,6 +9,8 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import io from 'socket.io-client';
 import * as Yup from 'yup';
+import SockJS from 'sockjs-client';
+import {Stomp , CompatClient } from '@stomp/stompjs';
 
 import Breadcrumb from '../../components/Breadcrumb';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -20,31 +22,48 @@ const Listing = ({ listingData } : any) => {
   const [listing, setListing] = useState(listingData);
   const [isBidding, setIsBidding] = useState(false);
 
+  const [messages, setMessages] = useState<{ text: string }[]>([]);
+  const [message, setMessage] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [stompClient, setStompClient] = useState<CompatClient | null>(null);
+
   useEffect(() => {
-    const room = listing && listing.slug;
-    if (!room) return;
+  const socket = new SockJS('http://localhost:8888/ws');
+  const client = Stomp.over(socket);
 
-    const socket = io('/socket', {
-      secure: false,
-      //query: `r_var=${room}`, this send the room variable to the server
+  client.connect({}, () => {
+    client.subscribe('/topic/messages', (message : any) => {
+      const receivedMessage = JSON.parse(message.body);
+      setMessages((prevMessages) => [...prevMessages, receivedMessage]);
     });
+    setStompClient(client);
+  });
+  
+  const handleNicknameChange = (event : any) => {
+    setNickname(event.target.value);
+  }
 
-    socket.emit('join');
+  const handleMessageChange = (event : any) => {
+    setMessage(event.target.value);
+  }
 
-    socket.on('bid', (data) => {
-      setListing(data);
-    });
+  const sendMessage = () => {
+    if(message.trim()){
+      const chatMessage ={
+        nickname,
+        content: message
+      };
+      if(stompClient){
+        stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
+      }
+      sendMessage();
+    }
+  }
 
-    socket.on('bid-deleted', (data) => {
-      setListing(data);
-    });
-
-    socket.on('listing-deleted', (data) => {
-      setListing(data);
-    });
-
-    return () => {socket.emit('unsubscribe', room);};
-  }, []);
+  return () =>{ 
+    client.disconnect()
+  };
+}, []);
 
   const onSubmit = async (body:any) => {
     setIsBidding(true);
@@ -175,7 +194,7 @@ const Listing = ({ listingData } : any) => {
 Listing.getInitialProps = async (context: NextPageContext, client: any) => {
   try {
     const { listingSlug } = context.query;
-    //const { data } = await client.get(``); // change this to our api call
+    //const { data } = await client.get(`change this to our api call`);
     return { listingData: listingSlug };
   } catch (err) {
     console.error(err);
