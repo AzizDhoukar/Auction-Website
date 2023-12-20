@@ -3,6 +3,7 @@ import SockJS from 'sockjs-client';
 import {Stomp , CompatClient } from '@stomp/stompjs';
 
 import MessageBubble from './components/MessageBubble';
+import MessageInput from './components/MessageInput';
 
 interface IProps {
   link: string;
@@ -14,7 +15,12 @@ const Chat = () => {
     { text: 'Hello, this is a test message!' },
     { text: 'This is another test message.' },
     { text: 'And one more for good measure.' },
+    { text: 'This is another test message.' },
+    { text: 'And one more for good measure.' },
+    { text: 'This is another test message.' },
+    { text: 'And one more for good measure.' },
   ]);
+
   const [message, setMessage] = useState('');
   const [nickname, setNickname] = useState('');
   const [stompClient, setStompClient] = useState<CompatClient | null>(null);
@@ -30,14 +36,6 @@ const Chat = () => {
     });
     setStompClient(client);
   });
-  
-  const handleNicknameChange = (event : any) => {
-    setNickname(event.target.value);
-  }
-
-  const handleMessageChange = (event : any) => {
-    setMessage(event.target.value);
-  }
 
   const sendMessage = () => {
     if(message.trim()){
@@ -56,13 +54,18 @@ const Chat = () => {
     client.disconnect()
   };
 }, []);
+
   return (
   <div className="h-full flex flex-col border">
     <div className="flex-1 overflow-y-auto">
+    {messages.map((message, index) => (
+        <MessageBubble key={index} data={message.text} isOwn={true}/>
+      ))}
       {messages.map((message, index) => (
-        <MessageBubble key={index} data={message.text} />
+        <MessageBubble key={index} data={message.text} isOwn={false}/>
       ))}
     </div>
+    <MessageInput/>
   </div>
   );
 };

@@ -137,7 +137,7 @@ const Listing = ({ listingData } : any) => {
               </Formik>
             </div>
             </div>
-            <div className='lg:w-1/2'>
+            <div className='lg:w-1/2 h-screen'>
               <Chat></Chat>
             </div>
           </div>

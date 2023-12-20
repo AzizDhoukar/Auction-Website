@@ -8,13 +8,13 @@ import Avatar from "./Avatar";
 
 interface MessageProps {
   data: string;
-  isLast?: boolean;
+  isOwn: boolean;
 }
 
-const MessageBubble = ({ data, isLast} : MessageProps) => {
+const MessageBubble = ({ data, isOwn} : MessageProps) => {
   const [imageModalOpen, setImageModalOpen] = useState(false);
 
-  const isOwn =  false  //session.data?.user?.email === data?.sender?.email
+  //const isOwn =  false  //session.data?.user?.email === data?.sender?.email
   
   const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
   const avatar = clsx(isOwn && 'order-2');
@@ -33,9 +33,6 @@ const MessageBubble = ({ data, isLast} : MessageProps) => {
         <div className="flex items-center gap-1">
           <div className="text-sm text-gray-500">
             {'data.sender.name'}
-          </div>
-          <div className="text-xs text-gray-400">
-            created at
           </div>
         </div>
         <div className={message}>
