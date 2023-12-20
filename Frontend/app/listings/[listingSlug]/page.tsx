@@ -7,63 +7,20 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import io from 'socket.io-client';
 import * as Yup from 'yup';
-import SockJS from 'sockjs-client';
-import {Stomp , CompatClient } from '@stomp/stompjs';
 
 import Breadcrumb from '../../components/Breadcrumb';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import Countdown from '@/app/components/Countdown';
 import Navbar from '@/app/components/navbar/Navbar';
 import Footer from '@/app/components/Footer';
+import Chat from './Chat';
 
 const Listing = ({ listingData } : any) => {
   const [listing, setListing] = useState(listingData);
   const [isBidding, setIsBidding] = useState(false);
 
-  const [messages, setMessages] = useState<{ text: string }[]>([]);
-  const [message, setMessage] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [stompClient, setStompClient] = useState<CompatClient | null>(null);
 
-  useEffect(() => {
-  const socket = new SockJS('http://localhost:8888/ws');
-  const client = Stomp.over(socket);
-
-  client.connect({}, () => {
-    client.subscribe('/topic/messages', (message : any) => {
-      const receivedMessage = JSON.parse(message.body);
-      setMessages((prevMessages) => [...prevMessages, receivedMessage]);
-    });
-    setStompClient(client);
-  });
-  
-  const handleNicknameChange = (event : any) => {
-    setNickname(event.target.value);
-  }
-
-  const handleMessageChange = (event : any) => {
-    setMessage(event.target.value);
-  }
-
-  const sendMessage = () => {
-    if(message.trim()){
-      const chatMessage ={
-        nickname,
-        content: message
-      };
-      if(stompClient){
-        stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
-      }
-      sendMessage();
-    }
-  }
-
-  return () =>{ 
-    client.disconnect()
-  };
-}, []);
 
   const onSubmit = async (body:any) => {
     setIsBidding(true);
@@ -119,7 +76,7 @@ const Listing = ({ listingData } : any) => {
             <div className='px-8 lg:mt-0 w-full order-2 lg:order-none'>
               <section className="py-3 mb-3">
                 <h3 className="text-3xl leading-tight font-semibold font-heading">
-                  {'listing.title'}
+                  {listing}
                 </h3>
                 <p className="mt-1 max-w-2xl text-l text-gray-500">
                   {'listing.description'}
@@ -135,11 +92,11 @@ const Listing = ({ listingData } : any) => {
                   </tr>
                   <tr className='border-t'>
                     <td className='py-3 font-medium text-gray-700'>Seller</td>
-                    <Link href={`/profile/${'listing.user.name'}`}>
-                      <td className='text-right max-w-2xl hover:underline cursor-pointer text-gray-500'>
-                        {'listing.user.name'}
-                      </td>
-                    </Link>
+                    <td className='text-right max-w-2xl hover:underline cursor-pointer text-gray-500'>
+                      <Link href={`/profile/${'listing.user.name'}`}>
+                      {'listing.user.name'}
+                      </Link>
+                    </td>
                   </tr>
                   <tr className='border-t'>
                     <td className='py-3 font-medium text-gray-700'>Time Left</td>
@@ -181,7 +138,7 @@ const Listing = ({ listingData } : any) => {
             </div>
             </div>
             <div className='lg:w-1/2'>
-              chat goes here
+              <Chat></Chat>
             </div>
           </div>
         </div>
@@ -194,11 +151,11 @@ const Listing = ({ listingData } : any) => {
 Listing.getInitialProps = async (context: NextPageContext, client: any) => {
   try {
     const { listingSlug } = context.query;
-    //const { data } = await client.get(`change this to our api call`);
+    //const { data } = await client.get(`change this to our api call`); //ichanged this a lot
     return { listingData: listingSlug };
   } catch (err) {
     console.error(err);
-    return { listingData: null };
+    return { listingData: 'null' };
   }
 };
 

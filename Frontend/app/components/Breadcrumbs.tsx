@@ -10,7 +10,7 @@ const Breadcrumbs = ({ children }: IProps) => {
       <ol className='flex items-center space-x-4'>
         {children.map((val, i) =>
           i === 0 ? (
-            <div>
+            <div key={i}>
               <Link href="/" className='text-gray-400 hover:text-gray-500' legacyBehavior>
                 <div>
                   <svg
@@ -27,7 +27,7 @@ const Breadcrumbs = ({ children }: IProps) => {
               </Link>
             </div>
           ) : (
-            <div className='flex items-center'>
+            <div key={i} className='flex items-center'>
               <svg
                 className="flex-shrink-0 h-5 w-5 text-gray-300"
                 xmlns="http://www.w3.org/2000/svg"
